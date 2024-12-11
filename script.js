@@ -13,7 +13,7 @@ function wishMe(){
     let day = new Date();
     let hours= day.getHours();
     if(hours>=0 && hours<12){
-        speak("Good Morgning Vaibhav");
+        speak("Good Morning Vaibhav");
     }
     else if(hours>=12 && hours<16){
         speak("Good afternoon Vaibhav");
@@ -30,12 +30,13 @@ let speechRecognition = window.speechRecognition || window.webkitSpeechRecogniti
 let recognition = new speechRecognition();
 recognition.onresult=(event)=>{
     let currentIndex = event.resultIndex;
-    let trascript=event.result[currentIndex][0].trascript
-    content.innerText = trascript;
-    takeCommand(trascript.tolowercase());
+    let transcript=event.results[currentIndex][0].transcript
+    content.innerText = transcript;
+    takeCommand(transcript.toLowerCase());
     console.log(event)
 }
 btn.addEventListener("click",()=>{
+    console.log("it is working")
     recognition.start();
     btn.style.display="none"
     voice.style.display="block"
@@ -47,7 +48,7 @@ function takeCommand(message){
     if(message.includes("hello")||message.includes("hey")){
         speak("hello sir, what can i help you?")
     }else if(message.includes("who are you")){
-        speak("I am virtual assistant, created by vaibhav")
+        speak("I am shriya virtual assistant, created by vaibhav")
 
     }else if(message.includes("Open you tube")){
         speak("opening you tube..")
@@ -63,7 +64,7 @@ function takeCommand(message){
         window.open("https://www.instagram.com/shitalwayal999/reel/DDW0ocCKRzqQRfDdIbGMO00ScbAcb5KgPZ36mI0/")
 
     }
-    else if(message.includes("shriya open your instagram")){
+    else if(message.includes("open your instagram")){
         speak("opening insta")
         window.open("https://www.instagram.com/lil_cutie_shriya230423/")
     }
@@ -72,7 +73,7 @@ function takeCommand(message){
         speak(time)
 
     }
-    else if(message.includes("shriya what is your name")){
+    else if(message.includes("your name")){
         speak("My name is Shriya Bhagwat Jeughale, and I am 1.5 years old. I am originally from Chikhali but currently live in Daund, Pune.")
     }
     else{
